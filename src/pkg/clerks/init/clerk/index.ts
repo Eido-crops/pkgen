@@ -12,7 +12,7 @@ async function greet(){
     if(
         !shell.test("-e", `${process.env.HOME}/.pkgen`) ||
         !shell.test("-e", `${process.env.HOME}/.pkgen/config.yml`) ||
-        !shell.test("-e", `${process.env.HOME}/.pkgen/template/default`) ||
+        !shell.test("-e", `${process.env.HOME}/.pkgen/template`) ||
         !shell.test("-e", "./pkg") ||
         !shell.test("-e", "./.pkgen.yml")
     ){
