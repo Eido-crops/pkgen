@@ -49,7 +49,7 @@ async function buildEnvironment(){
 
     if(!shell.test("-e", `${process.env.HOME}/.pkgen/config.yml`)) {
                         
-        const configYml:string = `lang: golang\ncurrentTemplate: default` 
+        const configYml:string = `lang: '@golang'\ncurrentTemplate: '@default'` 
 
         shell.exec(`echo "${configYml}" > ${process.env.HOME}/.pkgen/config.yml`)
         await new Promise(r => {
