@@ -20,7 +20,7 @@ export default ():void => {
                 return
             }
 
-            const { getBaseYaml, getTemplateList } = getInfoClerk.Services()
+            const { getBaseYaml, getTemplateList, getLangList } = getInfoClerk.Services()
             const { updateConfig } = updateClerk.Services()
 
             inquirer.prompt([
@@ -32,6 +32,10 @@ export default ():void => {
                 }
             ])
             .then((answers:any) => {
+                if(getLangList(answers.template).length == 0) {
+                    console.log(`⚠️  ${chalk.red("Process cannot continue, because this template is empty.")}`)
+                    return
+                }
                 updateConfig("currentTemplate", getBaseYaml()(null), answers.template)
             })
 

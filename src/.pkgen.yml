@@ -1,0 +1,18 @@
+pkg:
+    clerks:
+        generate:
+            package:
+                clerk: # パッケージの生成に関する処理
+        get:
+            info:
+                clerk: # yamlファイルの読み込みなどの処理
+        init:
+            clerk: # コマンドを利用する為の初期処理
+        update:
+            clerk: # yamlファイルの上書きなど更新処理
+
+    
+    cmd: # コマンド
+    core:
+        cac: # cac
+    env: # パスなど共通して利用する情報

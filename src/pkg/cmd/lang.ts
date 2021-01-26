@@ -23,7 +23,7 @@ export default ():void => {
             const { getBaseYaml, getLangList } = getInfoClerk.Services()
             const { updateConfig } = updateClerk.Services()
 
-            if(getLangList().length == 0){
+            if(getLangList(getBaseYaml()("currentTemplate")).length == 0){
                 console.log(`⚠️  ${chalk.red("Process cannot continue, because this template is empty.")}`)
                 return
             }
@@ -33,7 +33,7 @@ export default ():void => {
                     type: "list",
                     name: "lang",
                     message: `Select the programming language you want to use.\n${getBaseYaml()("lang")}(current) ->`,
-                    choices: getLangList()
+                    choices: getLangList(getBaseYaml()("currentTemplate"))
                 }
             ])
             .then((answers:any) => {

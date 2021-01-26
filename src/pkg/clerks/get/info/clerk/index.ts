@@ -19,14 +19,13 @@ function getTemplateList(){
     .filter(({ name }) => !/^\./.test(name))
     .map(({ name }) => name)
 }
-function getLangList(){
-    const allDirents = fs.readdirSync(`${process.env.HOME}/.pkgen/template/${getBaseYaml()("currentTemplate")}/`, { withFileTypes: true })
+function getLangList(templateName: string){
+    const allDirents = fs.readdirSync(`${process.env.HOME}/.pkgen/template/${templateName}/`, { withFileTypes: true })
 
     return allDirents
     .filter(dirent => dirent.isDirectory())
     .filter(({ name }) => !/^\./.test(name))
     .map(({ name }) => name)
-
 }
 function getOutpostYaml(){
     const yml = fs.readFileSync("./.pkgen.yml", 'utf8')
