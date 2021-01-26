@@ -37,6 +37,7 @@ export default ():void => {
                     return
                 }
                 updateConfig("currentTemplate", getBaseYaml()(null), answers.template)
+                updateConfig("lang", getBaseYaml()(null), getLangList(answers.template)[0])
             })
 
         })()
