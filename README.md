@@ -35,7 +35,7 @@ pkg:
 ## Installation
 
 ```
-curl -O -L https://github.com/overgrow-tools/pkgen/releases/download/v0.1/pkgen
+curl -O -L https://github.com/overgrow-crops/pkgen/releases/download/v0.1/pkgen
 chmod +x ./pkgen
 mv ./pkgen /usr/local/bin
 ```
