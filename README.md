@@ -26,9 +26,6 @@ pkg:
         update:
             clerk: # yamlファイルの上書きなど更新処理
     
-    cmd: # コマンド
-    core:
-        cac: # cac
     env: # パスなど共通して利用する情報
 ```
 
