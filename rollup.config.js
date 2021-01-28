@@ -21,12 +21,6 @@ export default {
       babelHelpers: "bundled",
       configFile: path.resolve(__dirname, ".babelrc.js"),
       exclude: 'node_modules/**'
-    }),
-    // pluginNodeResolve({ jsnext: true }), // node_modulesにあるのもくっつけてくれる
-    // rootImport({
-    //   root: `${__dirname}/src`,
-    //   useInput: 'prepend',
-    //   extensions: '.js',
-    // })
+    })
   ],
 }

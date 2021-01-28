@@ -1,4 +1,4 @@
-import cli from '@/pkg/core/cac'
+import cli from '@/cmd/cac'
 import initClerk from '@/pkg/clerks/init/clerk'
 import getInfoClerk from '@/pkg/clerks/get/info/clerk'
 import updateClerk from '@/pkg/clerks/update/clerk'

@@ -7,3 +7,4 @@ pkg
 pkgen
 .DS_Store
 __MACOSX
+package-lock.json

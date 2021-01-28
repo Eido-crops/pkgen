@@ -1,8 +1,8 @@
-import cli from '@/pkg/core/cac'
+import cli from '@/cmd/cac'
 import { version } from '@/version'
-import rootCmd from '@/pkg/cmd/root'
-import langCmd from '@/pkg/cmd/lang'
-import tplCmd from '@/pkg/cmd/template'
+import rootCmd from '@/cmd/root'
+import langCmd from '@/cmd/lang'
+import tplCmd from '@/cmd/template'
 
 cli.name = "pkgen"
 cli.version(version)
