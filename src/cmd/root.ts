@@ -1,7 +1,8 @@
 import cli from '@/cmd/cac'
 import initClerk from '@/pkg/clerks/init/clerk'
 import getInfoClerk from '@/pkg/clerks/get/info/clerk'
-import genPkgClerk from '@/pkg/clerks/generate/package/clerk'
+import { genPkg } from '@/pkg/store/generate/clerk/services'
+import { dotPropertyToObj } from '@/pkg/store/convert/clerk/services'
 const chalk = require('chalk')
 
 export default ():void => {
@@ -20,10 +21,9 @@ export default ():void => {
             }
 
             const { getBaseYaml, getOutpostYaml } = getInfoClerk.Services()
-            const { genPkg } = genPkgClerk.Services()
 
             genPkg(
-                getOutpostYaml(),
+                dotPropertyToObj(getOutpostYaml()),
                 "pkg",
                 getBaseYaml()("lang"),
                 getBaseYaml()("currentTemplate")
