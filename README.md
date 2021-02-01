@@ -14,6 +14,16 @@ pkgenは非常にシンプルなパッケージジェネレーターです。
 
 ```yaml
 pkg:
+    store:
+        generate:
+            clerk:
+                services:
+        read:
+            clerk:
+                services:
+        convert:
+            clerk:
+                services:
     clerks:
         generate:
             package:
@@ -25,7 +35,7 @@ pkg:
             clerk: # コマンドを利用する為の初期処理
         update:
             clerk: # yamlファイルの上書きなど更新処理
-    
+
     env: # パスなど共通して利用する情報
 ```
 
