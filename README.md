@@ -42,7 +42,7 @@ pkg:
 ## Installation
 
 ```
-curl -O -L https://github.com/overgrow-crops/pkgen/releases/download/v0.2.0/pkgen
+curl -O -L https://github.com/Eido-crops/pkgen/releases/download/v0.2.0/pkgen
 chmod +x ./pkgen
 mv ./pkgen /usr/local/bin
 ```
