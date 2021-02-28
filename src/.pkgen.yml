@@ -1,24 +1,45 @@
 pkg:
-    store:
-        generate:
-            clerk:
-                services:
-        read:
-            clerk:
-                services:
-        convert:
-            clerk:
-                services:
-    clerks:
-        generate:
-            package:
-                clerk: # パッケージの生成に関する処理
-        get:
-            info:
-                clerk: # yamlファイルの読み込みなどの処理
-        init:
-            clerk: # コマンドを利用する為の初期処理
-        update:
-            clerk: # yamlファイルの上書きなど更新処理
+    # パスなど共通して利用する情報
+    env:
 
-    env: # パスなど共通して利用する情報
+    clerk:
+        # pkgenコマンドを実行するための環境を構築する
+        build.services:
+            ## pkgenコマンドの実行環境基盤を構築する
+            # Basis():void
+
+        # コンソールにメッセージを表示する
+        print.services:
+            ## コマンドの実行に必要な環境が無い場合にコンソールに表示、初期化が必要かを返す関数を返す。
+            # Introduction()():bool
+
+        # コマンドの実行によって行われるパッケージの生成に関する処理
+        generate.services:
+            ## pkgen.ymlの構造を再起的に読み込みパッケージを生成
+            # Package(schema: any, footprint: string, lang: string, template: string):void
+
+        # ファイルの内容を読み込む
+        read.services:
+            ## $HOME/.pkgen/config.ymlを読み込む、フィールド名を指定すれば指定したフィールドの値を返す。
+            # BaseYaml(field: string | null):any
+
+            ## ./.pkgen.ymlを読み込む
+            # PkgenYaml():any
+
+        # ファイル以外からの情報を取得
+        get.services:
+            ## $HOME/.pkgen/template直下のディレクトリ名一覧をテンプレート一覧として取得
+            # TemplateList():any
+            
+            ## $HOME/.pkgen/.pkgen/template/選択中テンプレート直下のディレクトリ名一覧をプログラミング言語一覧として取得
+            # LangList(templateName: string):any
+
+        # 別構造へと展開
+        expand.services:
+            ## yamlファイルの`foo.bar`のような構造をオブジェクト構造に完全に展開し展開済みオブジェクトを返す
+            # Yaml(yamlData: any):any
+        
+        # $HOME/.pkgen/config.ymlの更新
+        update.services:
+            ## $HOME/.pkgen/config.ymlの更新
+            # Config(targetField:string, configData: any, newValue: string | undefined):void

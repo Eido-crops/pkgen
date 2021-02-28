@@ -1,6 +1,6 @@
 
 // 渡されたyamlDataを再帰的に読み込み全ての`hoge.foo.bar`形式のプロパティをオブジェクトに変換する
-function dotPropertyToObj(yamlData: any) {
+function Yaml(yamlData: any) {
     try {
         // 全ての`hoge.foo.bar`形式のプロパティをオブジェクトに変換するまでループする
         let isContinue = true
@@ -25,7 +25,7 @@ function dotPropertyToObj(yamlData: any) {
                     // 変換完了後変換元のプロパティを削除する
                     delete yamlData[currentLocation]
                 }
-                dotPropertyToObj(yamlData[currentLocation])
+                Yaml(yamlData[currentLocation])
             }
         }
     } catch (error) {}
@@ -34,6 +34,6 @@ function dotPropertyToObj(yamlData: any) {
 }
 
 
-export {
-    dotPropertyToObj
+export default {
+    Yaml
 }

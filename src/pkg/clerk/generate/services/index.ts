@@ -1,12 +1,13 @@
 const chalk = require('chalk')
 const shell = require('shelljs')
 
-function genPkg(schema: any, footprint: string, lang: string, template: string){
-    try {
-        for (const currentLocation of Object.keys(schema)) {
 
-            const path = `${footprint}/${currentLocation}/${schema[currentLocation]}`
-                            .replace("null", "").replace("[object Object]", "")
+function Package(schema: any, footprint: string, lang: string, template: string){
+    try {
+        for (let currentLocation of Object.keys(schema)) {
+
+            let path = `${footprint}/${currentLocation}/${schema[currentLocation]}`
+            path = path.replace("null", "").replace("[object Object]", "")
         
             if(!shell.test("-e", path)){
                 shell.mkdir(path)
@@ -16,7 +17,7 @@ function genPkg(schema: any, footprint: string, lang: string, template: string){
                 }
             }
 
-            genPkg(
+            Package(
                 schema[currentLocation],
                 `${footprint}/${currentLocation}`,
                 lang,
@@ -26,9 +27,6 @@ function genPkg(schema: any, footprint: string, lang: string, template: string){
     } catch (error) {}
 }
 
-
-export default { 
-    Services: () => ({
-        genPkg
-    })
+export default {
+    Package
 }
