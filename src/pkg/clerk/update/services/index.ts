@@ -1,7 +1,7 @@
 import fs from 'fs'
 const yaml = require('js-yaml')
 
-function updateConfig(targetField:string, configData: any, newValue: string | undefined){
+function Config(targetField:string, configData: any, newValue: string | undefined){
     if(!newValue) return
     try {
         configData[targetField] = newValue
@@ -10,9 +10,6 @@ function updateConfig(targetField:string, configData: any, newValue: string | un
     } catch (error) {}
 }
 
-
 export default {
-    Services: () => ({
-        updateConfig
-    })
+    Config
 }

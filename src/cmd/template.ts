@@ -1,7 +1,11 @@
 import cli from '@/cmd/cac'
-import initClerk from '@/pkg/clerks/init/clerk'
-import getInfoClerk from '@/pkg/clerks/get/info/clerk'
-import updateClerk from '@/pkg/clerks/update/clerk'
+
+import cPrint from '@/pkg/clerk/print/services'
+import cBuild from '@/pkg/clerk/build/services'
+import cRead from '@/pkg/clerk/read/services'
+import cGet from '@/pkg/clerk/get/services'
+import cUpdate from '@/pkg/clerk/update/services'
+
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 
@@ -10,34 +14,30 @@ export default ():void => {
     .command("template", "Change the selected package template.")
     .action(():void => {
         (async() => {
-            const { greet, buildEnvironment } = initClerk.Services()
-            const isInitialized = await greet()
-            await buildEnvironment()
-            const isInit = await isInitialized()
+            const isInitialize = await cPrint.Introduction()
+            await cBuild.Basis()
+            const isInit = await isInitialize()
 
             if(isInit){
                 console.log(`⚠️  ${chalk.red("Couldn't find the environment require to use the pkgen command, so rebuilt it.")}`)
                 return
             }
 
-            const { getBaseYaml, getTemplateList, getLangList } = getInfoClerk.Services()
-            const { updateConfig } = updateClerk.Services()
-
             inquirer.prompt([
                 {
                     type: "list",
                     name: "template",
-                    message: `Select the package template you want to use.\n${getBaseYaml()("currentTemplate")}(current) ->`,
-                    choices: getTemplateList()
+                    message: `Select the package template you want to use.\n${cRead.BaseYaml("currentTemplate")}(current) ->`,
+                    choices: cGet.TemplateList()
                 }
             ])
             .then((answers:any) => {
-                if(getLangList(answers.template).length == 0) {
+                if(cGet.LangList(answers.template).length == 0) {
                     console.log(`⚠️  ${chalk.red("Process cannot continue, because this template is empty.")}`)
                     return
                 }
-                updateConfig("currentTemplate", getBaseYaml()(null), answers.template)
-                updateConfig("lang", getBaseYaml()(null), getLangList(answers.template)[0])
+                cUpdate.Config("currentTemplate", cRead.BaseYaml(null), answers.template)
+                cUpdate.Config("lang", cRead.BaseYaml(null), cGet.LangList(answers.template)[0])
             })
 
         })()

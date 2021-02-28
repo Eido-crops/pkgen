@@ -6,33 +6,7 @@ const spinner = require('ora')()
 figlet.parseFont('Standard', standard)
 spinner.color = "green"
 
-
-async function greet(){
-    let isInitialized = false
-    if(
-        !shell.test("-e", `${process.env.HOME}/.pkgen`) ||
-        !shell.test("-e", `${process.env.HOME}/.pkgen/config.yml`) ||
-        !shell.test("-e", `${process.env.HOME}/.pkgen/template`) ||
-        !shell.test("-e", "./pkg") ||
-        !shell.test("-e", "./.pkgen.yml")
-    ){
-        await new Promise((r) => {
-            figlet("Pkgen", function(err:any, data:any) {
-                if (err) {
-                    console.log(err)
-                }
-                console.log(data)
-                r("service greet")
-            })
-        })
-        isInitialized = true
-    }
-    return async () => {
-        return isInitialized
-    }
-}
-
-async function buildEnvironment(){
+async function Basis(){
 
     if(!shell.test("-e", `${process.env.HOME}/.pkgen`)) {
         shell.mkdir(`${process.env.HOME}/.pkgen/`)
@@ -96,8 +70,5 @@ async function buildEnvironment(){
 }
 
 export default {
-    Services: () => ({
-        greet,
-        buildEnvironment
-    })
+    Basis
 }
