@@ -1,8 +1,8 @@
 import cli from '@/cmd/cac'
 
-import cPrint from '@/pkg/clerk/print/services'
-import cBuild from '@/pkg/clerk/build/services'
-import cRead from '@/pkg/clerk/read/services'
+import _print from '@/pkg/clerk/print/services'
+import _build from '@/pkg/clerk/build/services'
+import _read from '@/pkg/clerk/read/services'
 import cExpand from '@/pkg/clerk/expand/services'
 import cGen from '@/pkg/clerk/generate/services'
 
@@ -13,8 +13,8 @@ export default ():void => {
     .command("", "Generate a package based on the hierarchical structure described in .pkgen.yml.")
     .action(():void => {
         (async() => {
-            const isInitialize = await cPrint.Introduction()
-            await cBuild.Basis()
+            const isInitialize = await _print.Introduction()
+            await _build.Basis()
             const isInit = await isInitialize()
 
             if(isInit){
@@ -23,10 +23,10 @@ export default ():void => {
             }
             
             cGen.Package(
-                cExpand.Yaml(cRead.PkgenYaml()),
+                cExpand.Yaml(_read.PkgenYaml()),
                 "pkg",
-                cRead.BaseYaml("lang"),
-                cRead.BaseYaml("currentTemplate")
+                _read.BaseYaml("lang"),
+                _read.BaseYaml("currentTemplate")
             )
 
         })()
