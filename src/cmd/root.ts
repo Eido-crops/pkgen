@@ -1,12 +1,11 @@
 import cli from '@/cmd/cac'
+import { INITIALIZED_MSG } from '@/config'
 
 import _print from '@/pkg/clerk/print/services'
 import _build from '@/pkg/clerk/build/services'
 import _read from '@/pkg/clerk/read/services'
-import cExpand from '@/pkg/clerk/expand/services'
-import cGen from '@/pkg/clerk/generate/services'
-
-const chalk = require('chalk')
+import _expand from '@/pkg/clerk/expand/services'
+import _gen from '@/pkg/clerk/generate/services'
 
 export default ():void => {
     cli
@@ -18,12 +17,12 @@ export default ():void => {
             const isInit = await isInitialize()
 
             if(isInit){
-                console.log(`⚠️  ${chalk.red("Couldn't find the environment require to use the pkgen command, so rebuilt it.")}`)
+                console.log(INITIALIZED_MSG)
                 return
             }
             
-            cGen.Package(
-                cExpand.Yaml(_read.PkgenYaml()),
+            _gen.Package(
+                _expand.Yaml(_read.PkgenYaml()),
                 "pkg",
                 _read.BaseYaml("lang"),
                 _read.BaseYaml("currentTemplate")

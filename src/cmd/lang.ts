@@ -1,5 +1,7 @@
 import cli from '@/cmd/cac'
 
+import { INITIALIZED_MSG } from '@/config'
+
 import _print from '@/pkg/clerk/print/services'
 import _build from '@/pkg/clerk/build/services'
 import _read from '@/pkg/clerk/read/services'
@@ -19,7 +21,7 @@ export default ():void => {
             const isInit = await isInitialize()
 
             if(isInit){
-                console.log(`⚠️  ${chalk.red("Couldn't find the environment require to use the pkgen command, so rebuilt it.")}`)
+                console.log(INITIALIZED_MSG)
                 return
             }
 
