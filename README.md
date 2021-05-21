@@ -64,7 +64,7 @@ pkg:
 ## Installation
 
 ```
-curl -O -L https://github.com/mingle-crops/pkgen/releases/download/v0.2.1/pkgen
+curl -O -L https://github.com/mingle-crops/pkgen/releases/download/v1.0.0/pkgen
 chmod +x ./pkgen
 mv ./pkgen /usr/local/bin
 ```
