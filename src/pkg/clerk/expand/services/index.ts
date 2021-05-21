@@ -14,7 +14,10 @@ function Yaml(yamlData: any) {
                     for (const [i,loc] of Object.entries(locations)) {
                         if(parseInt(i) == locations.length - 1){
                             // `hoge.foo.bar`の`bar`にあたる場合元々の`hoge.foo.bar`に入っていた値を複製
-                            currentYaml[loc] = yamlData[currentLocation]
+                            // その際その値がobjectならそれを代入それ以外ならnullを代入
+                            currentYaml[loc] = (Object.prototype.toString.call(yamlData[currentLocation]) == '[object Object]')
+                                             ? yamlData[currentLocation]
+                                             : null
                         } else {
                             // `hoge.foo.bar`を再帰的にObjectに変換していく
                             currentYaml[loc] = {}
