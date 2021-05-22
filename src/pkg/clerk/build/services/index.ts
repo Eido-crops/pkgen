@@ -1,9 +1,6 @@
-import standard from 'figlet/importable-fonts/Standard'
-const figlet = require("figlet")
 const shell = require('shelljs')
 const spinner = require('ora')()
 
-figlet.parseFont('Standard', standard)
 spinner.color = "green"
 
 async function Basis(){

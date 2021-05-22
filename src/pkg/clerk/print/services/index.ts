@@ -1,10 +1,18 @@
-import standard from 'figlet/importable-fonts/Standard'
-const figlet = require("figlet")
 const shell = require('shelljs')
 const spinner = require('ora')()
 
-figlet.parseFont('Standard', standard)
 spinner.color = "green"
+
+function AsciiArt(){
+    const AA = `  ____  _                    
+ |  _ \\| | ____ _  ___ _ __  
+ | |_) | |/ / _\` |/ _ \\ '_ \\ 
+ |  __/|   < (_| |  __/ | | |
+ |_|   |_|\\_\\__, |\\___|_| |_|
+            |___/`
+
+    console.log(AA)
+}
 
 async function Introduction(){
     let isInitialize = false
@@ -15,15 +23,7 @@ async function Introduction(){
         !shell.test("-e", "./pkg") ||
         !shell.test("-e", "./.pkgen.yml")
     ){
-        await new Promise((r) => {
-            figlet("Pkgen", function(err:any, data:any) {
-                if (err) {
-                    console.log(err)
-                }
-                console.log(data)
-                r("service greet")
-            })
-        })
+        AsciiArt()
         isInitialize = true
     }
     return async () => {
@@ -32,5 +32,6 @@ async function Introduction(){
 }
 
 export default {
-    Introduction
+    Introduction,
+    AsciiArt
 }
