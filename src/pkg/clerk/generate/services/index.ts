@@ -16,7 +16,7 @@ function Package(schema: any, footprint: string, lang: string, template: string)
             let path = (isEnd)
                      ? `${footprint}/${currentLocation}/null`
                      : `${footprint}/${currentLocation}/${schema[currentLocation]}`
-            path = path.replace("null", "").replace("[object Object]", "")
+            path = path.replace(".//", "").replace("null", "").replace("[object Object]", "")
 
             if(!shell.test("-e", path)){
                 shell.mkdir(path)

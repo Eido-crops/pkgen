@@ -11,10 +11,10 @@ function BaseYaml(field: string | null){
 }
 
 function PkgenYaml(){
-    const yml = fs.readFileSync("./.pkgen.yml", 'utf8')
+    const yml = fs.readFileSync("./pkgen.yml", 'utf8')
     const data = yaml.safeLoad(yml)
 
-    return data.pkg
+    return data
 }
 
 export default {

@@ -20,8 +20,7 @@ async function Introduction(){
         !shell.test("-e", `${process.env.HOME}/.pkgen`) ||
         !shell.test("-e", `${process.env.HOME}/.pkgen/config.yml`) ||
         !shell.test("-e", `${process.env.HOME}/.pkgen/template`) ||
-        !shell.test("-e", "./pkg") ||
-        !shell.test("-e", "./.pkgen.yml")
+        !shell.test("-e", "./pkgen.yml")
     ){
         AsciiArt()
         isInitialize = true

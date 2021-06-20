@@ -23,14 +23,14 @@ pkg:
             ## $HOME/.pkgen/config.ymlを読み込む、フィールド名を指定すれば指定したフィールドの値を返す。
             # BaseYaml(field: string | null):any
 
-            ## ./.pkgen.ymlを読み込む
+            ## ./pkgen.ymlを読み込む
             # PkgenYaml():any
 
         # ファイル以外からの情報を取得
         get.services:
             ## $HOME/.pkgen/template直下のディレクトリ名一覧をテンプレート一覧として取得
             # TemplateList():any
-            
+
             ## $HOME/.pkgen/.pkgen/template/選択中テンプレート直下のディレクトリ名一覧をプログラミング言語一覧として取得
             # LangList(templateName: string):any
 
@@ -38,7 +38,7 @@ pkg:
         expand.services:
             ## yamlファイルの`foo.bar`のような構造をオブジェクト構造に完全に展開し展開済みオブジェクトを返す
             # Yaml(yamlData: any):any
-        
+
         # $HOME/.pkgen/config.ymlの更新
         update.services:
             ## $HOME/.pkgen/config.ymlの更新

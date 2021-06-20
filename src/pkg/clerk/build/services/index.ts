@@ -38,24 +38,11 @@ async function Basis(){
         shell.exec(`git clone git@github.com:overgrow888/pkgen-template.git ${process.env.HOME}/.pkgen/template`)
     }
 
-    if(!shell.test("-e", "./pkg")) {
-        shell.mkdir("./pkg")
+    if(!shell.test("-e", "./pkgen.yml")) {
+        shell.touch("./pkgen.yml")
         await new Promise(r => {
             spinner.start()
-            spinner.text = "Add the pkg directory to the current directory..."
-            setTimeout(r, 3000)
-        })
-        await new Promise(r => {
-            spinner.stop()
-            r("service make outpost dir")
-        })
-    }
-
-    if(!shell.test("-e", "./.pkgen.yml")) {
-        shell.exec(`echo "pkg:" > ./.pkgen.yml`)
-        await new Promise(r => {
-            spinner.start()
-            spinner.text = "Add the .pkgen.yml file to the current directory..."
+            spinner.text = "Add the pkgen.yml file to the current directory..."
             setTimeout(r, 3000)
         })
         await new Promise(r => {

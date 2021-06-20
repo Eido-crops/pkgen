@@ -9,7 +9,7 @@ import _gen from '@/pkg/clerk/generate/services'
 
 export default ():void => {
     cli
-    .command("", "Generate a package based on the hierarchical structure described in .pkgen.yml.")
+    .command("", "Generate a package based on the hierarchical structure described in pkgen.yml.")
     .action(():void => {
         (async() => {
             const isInitialize = await _print.Introduction()
@@ -23,7 +23,7 @@ export default ():void => {
             
             _gen.Package(
                 _expand.Yaml(_read.PkgenYaml()),
-                "pkg",
+                "./",
                 _read.BaseYaml("lang"),
                 _read.BaseYaml("currentTemplate")
             )

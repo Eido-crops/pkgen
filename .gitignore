@@ -2,8 +2,8 @@ node_modules
 dist
 pkg
 !src/**/pkg
-.pkgen.yml
-!src/**/.pkgen.yml
+pkgen.yml
+!src/**/pkgen.yml
 pkgen
 .DS_Store
 __MACOSX
